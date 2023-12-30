@@ -16,16 +16,16 @@ input_text=st.text_input("Search the Person")
 #give the propts here
 input_prompts = PromptTemplate(
         input_variables = ['name'],
-        template = "Tell me something funny about the celebrity {name}"
+        template = "Tell me about celebrity {name}"
 )
 
 ## OPENAI LLMS
-llm=OpenAI(temperature=0.8)
+llm=OpenAI(temperature=0.2)
 chain = LLMChain(llm=llm , prompt=input_prompts , verbose=True , output_key="person")
 
 input_prompts2 = PromptTemplate(
         input_variables = ['person'],
-        template = "Tell me where the {person} born"
+        template = "tell me something funny about {person}"
 )
 
 chain2 = LLMChain(llm=llm , prompt=input_prompts2 , verbose=True , output_key="dob")
